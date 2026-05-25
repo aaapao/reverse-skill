@@ -134,7 +134,6 @@ cybersecurity-skills-router/
 │   ├── radare2/                 # radare2 CLI
 │   ├── pentest-tools/           # 渗透测试（40+ 工具）
 │   ├── reverse-engineering/     # 通用逆向方法论
-│   ├── game-security/           # 游戏安全
 │   ├── browser-automation/      # 浏览器自动化
 │   ├── binary-diff/             # 符号迁移
 │   ├── docs-generator/          # 报告生成

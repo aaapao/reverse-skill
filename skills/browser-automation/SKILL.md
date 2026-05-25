@@ -3,7 +3,7 @@ name: browser-automation
 description: |
   统一自动化入口。覆盖浏览器自动化（Playwright）和 Windows 桌面应用自动化（OpenReverse）。
   浏览器场景：打开网页、点击、填表、爬取、截图、自动化登录、渗透页面交互。
-  桌面场景：操作 IDA/x64dbg/Cheat Engine 等 GUI 工具、Windows UI Automation、视觉驱动交互、桌面应用网络抓包。
+  桌面场景：操作 IDA/x64dbg 等 GUI 工具、Windows UI Automation、视觉驱动交互、桌面应用网络抓包。
   触发关键词：浏览器自动化、桌面自动化、打开网页、填表、爬取、截图、自动化登录、Playwright、agent-browser、headless、OpenReverse、UIA、CUA、桌面操作、Windows 自动化。
 ---
 
@@ -22,7 +22,7 @@ description: |
 - 批量表单提交
 
 ### 桌面应用场景（OpenReverse）
-- 操作 Windows 桌面应用（IDA Pro、x64dbg、Cheat Engine、Wireshark 等）
+- 操作 Windows 桌面应用（IDA Pro、x64dbg、Wireshark 等）
 - 需要视觉驱动交互（CUA 模式）
 - 需要结构化 UI 操作（UIA 模式）
 - 桌面应用的网络流量观察（内置 mitmproxy）
@@ -115,7 +115,7 @@ agent-browser wait --load networkidle
 | 模式 | 适合场景 | 底层 |
 |------|---------|------|
 | UIA | 目标应用有标准 Windows 控件（按钮、文本框、列表） | Windows UI Automation API |
-| CUA | 目标应用 UI 复杂或非标准控件（IDA 的反汇编视图、游戏界面） | 视觉识别 + 鼠标键盘 |
+| CUA | 目标应用 UI 复杂或非标准控件（IDA 的反汇编视图、自定义渲染界面） | 视觉识别 + 鼠标键盘 |
 
 ### 网络观察模式
 
@@ -222,6 +222,6 @@ npm run doctor:network
 - 抓到的请求需要分析 → `anything-analyzer` 或 `js-reverse`
 - 需要 JS 调试/Hook → `jshookmcp`
 - 需要还原签名算法 → `js-reverse`
-- 桌面应用是逆向工具 → `ida-reverse/` 或 `game-security/`
+- 桌面应用是逆向工具 → `ida-reverse/`
 
 **同级关联模块**: `js-reverse`（浏览器操作后可能需要分析 JS）、`ida-reverse`（OpenReverse 可以自动化操作 IDA GUI）

@@ -32,9 +32,6 @@
 - [种子] Go 恶意软件逆向（stripped+Garble）— 关键词: Go, Garble, GoReSym, GoResolver, C2, AES密钥
 - [2026-05-15] lumine v0.9.1 Go TLS 分片代理逆向 — 关键词: Go, TLS, 分片代理, GoReSym, 源码重建, PE32+, capstone
 
-### 游戏逆向
-- [种子] Unity IL2CPP 还原 + Frida hook — 关键词: Unity, IL2CPP, Il2CppDumper, frida-il2cpp-bridge, global-metadata, Android 游戏
-
 ### CTF / Pwn
 - [种子] CTF Pwn x64 栈溢出 + ROP → system — 关键词: pwn, x64, ROP, ret2libc, pwntools, pwndbg, ROPgadget, libc-database, 栈对齐
 
@@ -94,7 +91,7 @@
 
 ## 累计统计
 
-- 总项目数: 20（含 17 个种子 + 3 个真实项目）
+- 总项目数: 19（含 16 个种子 + 3 个真实项目）
 - 新增模式数: 24
 - 工具链修复数: 0
 - 最近更新: 2026-05-19
@@ -108,7 +105,6 @@
 ### Frida / 动态插桩
 - OkHttp 证书校验绕过 — `seed-008_apk-okhttp-ssl-pin-bypass.md`
 - 越狱检测绕过 — `seed-009_ios-jailbreak-detect-bypass.md`
-- IL2CPP method hook — `seed-014_unity-il2cpp-reverse.md`
 - root 检测绕过 — _尚无_
 
 ### Web 渗透
@@ -165,7 +161,6 @@
 - KSAd / Kuaishou 广告 SDK — `2026-05-15-cellular-pro-mumu-ksad-fragment-fix.md`
 - MuMu 模拟器适配 — `2026-05-15-cellular-pro-mumu-ksad-fragment-fix.md`
 - OkHttp + 自定义 CertificatePinner — `seed-008_apk-okhttp-ssl-pin-bypass.md`
-- Unity IL2CPP 游戏 — `seed-014_unity-il2cpp-reverse.md`
 
 ### iOS
 - 越狱检测 + SSL Pin 双重防护 — `seed-009_ios-jailbreak-detect-bypass.md`

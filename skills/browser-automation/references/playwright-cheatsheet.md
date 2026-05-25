@@ -265,7 +265,7 @@ await Promise.all([
 | 模式 | 命令前缀 | 适合场景 |
 |------|---------|---------|
 | UIA | `openreverse uia ...` | 标准 Windows 控件（按钮、文本框、列表） |
-| CUA | `openreverse cua ...` | 复杂/非标准 GUI（IDA 反汇编视图、游戏界面） |
+| CUA | `openreverse cua ...` | 复杂/非标准 GUI（IDA 反汇编视图、自定义渲染界面） |
 
 ### UIA 模式（结构化控件操作）
 
@@ -362,22 +362,6 @@ openreverse network stop
 7. openreverse cua key "F2"               # 设置断点
 8. openreverse cua key "F9"               # 运行
 9. openreverse cua screenshot             # 截图保存状态
-```
-
-### Cheat Engine 内存扫描自动化
-
-```text
-场景：自动化值搜索
-
-1. openreverse uia launch "cheatengine.exe"
-2. openreverse uia click "Button:OpenProcess"
-3. openreverse uia click "List:game.exe"
-4. openreverse uia fill "Edit:Value" "100"
-5. openreverse uia click "Button:FirstScan"
-6. # 在游戏中改变值...
-7. openreverse uia fill "Edit:Value" "95"
-8. openreverse uia click "Button:NextScan"
-9. openreverse uia get-text "List:Results"
 ```
 
 ---

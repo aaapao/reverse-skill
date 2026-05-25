@@ -42,12 +42,12 @@ found_vcall:
 found_call:
   - insn_va: '0x180888800'
     insn_disasm: call sub_180999900
-    func_name: CLoopModeGame_RegisterEventMapInternal
+    func_name: CLoopMode_RegisterEventMapInternal
 
 found_funcptr:
   - insn_va: '0x180666600'
     insn_disasm: lea rdx, sub_15BC910
-    funcptr_name: CLoopModeGame_OnClientPollNetworking
+    funcptr_name: CLoopMode_OnClientPollNetworking
 
 found_gv:
   - insn_va: '0x180444400'
@@ -59,7 +59,7 @@ found_struct_offset:
     insn_disasm: mov rcx, [r14+58h]
     offset: '0x58'
     size: 8
-    struct_name: CGameResourceService
+    struct_name: CResourceService
     member_name: m_pEntitySystem
 ```
 

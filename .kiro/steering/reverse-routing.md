@@ -6,7 +6,7 @@ inclusion: auto
 
 当用户的消息包含以下任意关键词时，必须在执行任务前先完成路由流程：
 
-**触发词**: 逆向、反编译、IDA、radare2、Frida、Hook、APK、二进制、ELF、PE、so、dll、签名、加密参数、CTF、渗透、Nmap、漏洞、还原源码、还原、反汇编、脱壳、解压、payload、shellcode、内核模块、驱动加载、源码还原、渗透测试、红队、HW、攻防演练、打点、SQL注入、SQLMap、目录爆破、FFUF、密码破解、Hashcat、Hydra、Metasploit、Nuclei、端口扫描、SRC、Bug Bounty、WAF bypass、游戏逆向、反作弊、Unity、Unreal、Cheat Engine、符号迁移、bindiff、浏览器自动化、Playwright、JS逆向、jshookmcp、CDP、SourceMap、抓包、HTTP捕获、anything-analyzer、画图、流程图、Mermaid、写报告、writeup、Go逆向、Rust逆向、固件、IoT、binwalk、恶意软件、YARA、内网渗透、横向移动、域渗透、BloodHound、权限提升、SUID、Mimikatz、Kerberoasting、C2、Cobalt Strike、近源渗透、BadUSB、EDR绕过、免杀、钓鱼、社工、供应链攻击、攻击链、完整渗透、攻击面评估、后渗透、Pentest Swarm、pentestswarm、HexStrike、MetasploitMCP、mcp-kali-server、SSTI、SSTImap、XSS、XSStrike、WordPress、WPProbe、AdaptixC2、Fluxion、Coercer、NetExec、evil-winrm、Certipy、Responder、wfuzz、Wireshark、BurpSuite、BurpMCP、Burp代理、Intruder爆破、Repeater重放、Collaborator、代理历史、GEF、GDB
+**触发词**: 逆向、反编译、IDA、radare2、Frida、Hook、APK、二进制、ELF、PE、so、dll、签名、加密参数、CTF、渗透、Nmap、漏洞、还原源码、还原、反汇编、脱壳、解压、payload、shellcode、内核模块、驱动加载、源码还原、渗透测试、红队、HW、攻防演练、打点、SQL注入、SQLMap、目录爆破、FFUF、密码破解、Hashcat、Hydra、Metasploit、Nuclei、端口扫描、SRC、Bug Bounty、WAF bypass、符号迁移、bindiff、浏览器自动化、Playwright、JS逆向、jshookmcp、CDP、SourceMap、抓包、HTTP捕获、anything-analyzer、画图、流程图、Mermaid、写报告、writeup、Go逆向、Rust逆向、固件、IoT、binwalk、恶意软件、YARA、内网渗透、横向移动、域渗透、BloodHound、权限提升、SUID、Mimikatz、Kerberoasting、C2、Cobalt Strike、近源渗透、BadUSB、EDR绕过、免杀、钓鱼、社工、供应链攻击、攻击链、完整渗透、攻击面评估、后渗透、Pentest Swarm、pentestswarm、HexStrike、MetasploitMCP、mcp-kali-server、SSTI、SSTImap、XSS、XSStrike、WordPress、WPProbe、AdaptixC2、Fluxion、Coercer、NetExec、evil-winrm、Certipy、Responder、wfuzz、Wireshark、BurpSuite、BurpMCP、Burp代理、Intruder爆破、Repeater重放、Collaborator、代理历史、GEF、GDB
 
 ## 触发后必须执行的流程
 

@@ -173,7 +173,7 @@ p = process('./vuln')
 | PicoCTF | 入门友好 | https://picoctf.org/ |
 | pwnable.kr | Pwn 专项 | http://pwnable.kr/ |
 | cryptopals | Crypto 专项 | https://cryptopals.com/ |
-| OverTheWire | Wargames | https://overthewire.org/ |
+| OverTheWire | War 系列挑战 | https://overthewire.org/ |
 | Root-Me | 综合挑战 | https://www.root-me.org/ |
 
 ---

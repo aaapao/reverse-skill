@@ -461,7 +461,7 @@ for pos in range(FLAG_LEN):
 
 ## Thread Race Condition with Signed Integer Overflow (Codegate 2017)
 
-**Pattern (Hunting):** A game binary uses thread-unsafe skill selection. The attack thread checks `skill_id <= 4` using signed comparison, then sleeps briefly before applying damage. During the sleep, switch to a different skill. The fireball skill uses `cdqe` (sign-extend EAX to RAX), converting `0xFFFFFFFF` (icesword damage) to `-1` as a signed 64-bit value. Subtracting `-1` from the boss's HP (`0x7FFFFFFFFFFFFFFF`) causes signed overflow to a negative value, killing the boss.
+**Pattern (Hunting):** A combat-simulation binary uses thread-unsafe skill selection. The attack thread checks `skill_id <= 4` using signed comparison, then sleeps briefly before applying damage. During the sleep, switch to a different skill. The fireball skill uses `cdqe` (sign-extend EAX to RAX), converting `0xFFFFFFFF` (icesword damage) to `-1` as a signed 64-bit value. Subtracting `-1` from the boss's HP (`0x7FFFFFFFFFFFFFFF`) causes signed overflow to a negative value, killing the boss.
 
 ```python
 # Race condition exploit:

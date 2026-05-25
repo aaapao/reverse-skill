@@ -47,7 +47,6 @@ flowchart LR
         IDA[ida-reverse<br/>IDA Pro]
         R2[radare2<br/>CLI 分析]
         RE[reverse-engineering<br/>通用方法论]
-        Game[game-security<br/>游戏安全]
         BinDiff[binary-diff<br/>符号迁移]
     end
 
@@ -78,7 +77,7 @@ flowchart LR
     end
 
     SKILL --> Routing
-    Routing --> APK & IDA & R2 & RE & Game & BinDiff
+    Routing --> APK & IDA & R2 & RE & BinDiff
     Routing --> Pentest & JS & Browser
     Routing --> CTF
 

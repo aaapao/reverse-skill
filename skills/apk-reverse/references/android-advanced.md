@@ -135,7 +135,7 @@ Java.perform(function() {
 ```javascript
 // 搜索内存中的字符串
 Process.enumerateModules().forEach(function(module) {
-    if (module.name === "libgame.so") {
+    if (module.name === "libtarget.so") {
         Memory.scan(module.base, module.size, "48 65 6C 6C 6F", {  // "Hello"
             onMatch: function(address, size) {
                 console.log("Found at: " + address);

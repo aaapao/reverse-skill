@@ -1,8 +1,6 @@
 # CTF Reverse - Platform & Framework-Specific Techniques
 
 ## Table of Contents
-- [Roblox Place File Analysis](#roblox-place-file-analysis)
-- [Godot Game Asset Extraction](#godot-game-asset-extraction)
 - [Rust serde_json Schema Recovery](#rust-serde_json-schema-recovery)
 - [Android JNI RegisterNatives Obfuscation (HTB WonderSMS)](#android-jni-registernatives-obfuscation-htb-wondersms)
 - [Android DEX Runtime Bytecode Patching via /proc/self/maps (Google CTF 2017)](#android-dex-runtime-bytecode-patching-via-procselfmaps-google-ctf-2017)
@@ -20,48 +18,8 @@
 - [IBM AS/400 SAVF File EBCDIC Decoding (EKOPARTY 2017)](#ibm-as400-savf-file-ebcdic-decoding-ekoparty-2017)
 - [Intel SGX Enclave Reverse Engineering (Pwn2Win 2017)](#intel-sgx-enclave-reverse-engineering-pwn2win-2017)
 
-For core language reversing (Python, BF/esolangs, DOS, Unity, OPAL), see [languages.md](languages.md).
+For core language reversing (Python, BF/esolangs, DOS, OPAL), see [languages.md](languages.md).
 For Go and Rust binary reversing, see [languages-compiled.md](languages-compiled.md).
-
----
-
-## Roblox Place File Analysis
-
-**Pattern (MazeRunna, 0xFun 2026):** Roblox game with flag hidden in older version; latest version contains decoy.
-
-**Version history via Asset Delivery API:**
-```bash
-# Extract placeId and universeId from game page HTML
-# Query each version (requires .ROBLOSECURITY cookie):
-curl -H "Cookie: .ROBLOSECURITY=..." \
-  "https://assetdelivery.roblox.com/v2/assetId/{placeId}/version/1"
-# Download location URL → place_v1.rbxlbin
-```
-
-**Binary format parsing:** `.rbxlbin` files contain chunks:
-- **INST** — class buckets and referent IDs
-- **PROP** — per-instance fields (including `Script.Source`)
-- **PRNT** — parent-child relationships (object tree)
-
-Decode chunk payloads, walk PROP entries for `Source` field, dump `Script.Source` / `LocalScript.Source` per version, then diff.
-
-**Key lesson:** Always check version history. Latest version may contain decoy flag while real flag is in an older version. Diff script sources across versions.
-
----
-
-## Godot Game Asset Extraction
-
-**Pattern (Steal the Xmas):** Encrypted Godot .pck packages.
-
-**Tools:**
-- [gdsdecomp](https://github.com/GDRETools/gdsdecomp) - Extract Godot packages
-- [KeyDot](https://github.com/Titoot/KeyDot) - Extract encryption key from Godot executables
-
-**Workflow:**
-1. Run KeyDot against game executable → extract encryption key
-2. Input key into gdsdecomp
-3. Extract and open project in Godot editor
-4. Search scripts/resources for flag data
 
 ---
 

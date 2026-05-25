@@ -12,7 +12,6 @@ HD44780 LCD GPIO reconstruction, RISC-V advanced extensions and debugging, ARM64
 - [MIPS64 Cavium OCTEON Coprocessor 2 Crypto (SEC-T CTF 2017)](#mips64-cavium-octeon-coprocessor-2-crypto-sec-t-ctf-2017)
 - [EFM32 ARM Microcontroller MMIO AES (SEC-T CTF 2017)](#efm32-arm-microcontroller-mmio-aes-sec-t-ctf-2017)
 - [MBR/Bootloader Reversing with QEMU + GDB (Square CTF 2017)](#mbrbootloader-reversing-with-qemu--gdb-square-ctf-2017)
-- [Game Boy ROM Z80 Analysis in bgb Debugger (Square CTF 2017)](#game-boy-rom-z80-analysis-in-bgb-debugger-square-ctf-2017)
 
 ---
 
@@ -303,26 +302,3 @@ open('disk_patched.img', 'wb').write(data)
 **References:** Square CTF 2017
 
 ---
-
-## Game Boy ROM Z80 Analysis in bgb Debugger (Square CTF 2017)
-
-Game Boy ROMs use the Sharp SM83 (LR35902) CPU, a Z80/8080 hybrid. Load the ROM in the **bgb** emulator which provides GDB-like debugging: breakpoints, memory inspection, and register display.
-
-**Key instructions for flag comparisons:**
-```asm
-LD   A, [HL]    ; load byte from memory pointed to by HL into A
-AND  [HL]       ; A = A & *HL  — compares player byte against memory value
-CP   N          ; compare A with immediate N (sets Z flag if equal)
-```
-
-When `and (hl)` or `cp (hl)` fires during input validation, the expected byte is visible at the `(hl)` address in the memory view.
-
-**bgb workflow:**
-1. Load ROM: File → Open ROM
-2. Right-click disassembly → "Run to cursor" or set breakpoint (F2)
-3. When comparison fires, inspect Registers panel (HL value) and Memory panel (`*HL`)
-4. Note expected value, advance to next comparison position
-
-**Key insight:** Game Boy ROMs are Z80/SM83 architecture. The bgb debugger provides GDB-like functionality; key comparisons use `(hl)`-indirect addressing so the expected value is directly visible in the memory view during the comparison.
-
-**References:** Square CTF 2017

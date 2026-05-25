@@ -29,7 +29,7 @@
 | Wireshark 不识别协议，只显示 "Data" | 是私有协议，没有解析器 | 写 Wireshark Lua dissector 或 直接 Python 离线分析 | 30min |
 | 看起来无规律，每帧都不同 | 有压缩或加密层 | 用熵分析（`ent dump.bin`）判断是否加密；找 nonce/IV 字段 | 1h |
 | 长度字段算不对 | 长度可能是 little-endian / big-endian / 含/不含自身 | 找几条不同长度的帧，列方程组解出来 | 40min |
-| TLS 抓到但解不了 | 客户端不留 SSLKEYLOGFILE | 在客户端进程层 hook（Frida 抓 ssl_read/ssl_write）或 IL2CPP 层抓明文 | 1.5h |
+| TLS 抓到但解不了 | 客户端不留 SSLKEYLOGFILE | 在客户端进程层 hook（Frida 抓 ssl_read/ssl_write）抓明文 | 1.5h |
 | 数据正确但服务端不响应 | 协议带递增的 seq / nonce，重放被拒 | 搞清楚 seq 计算方式（通常前一帧的 hash 或递增计数器） | 50min |
 
 ## 工具链发现

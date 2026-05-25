@@ -13,7 +13,6 @@
 | 固件 / IoT | `reverse-engineering/platforms.md` — binwalk/ARM/MIPS | `reverse-engineering/tools.md` — Ghidra headless |
 | WASM / Python 字节码 / .NET | `reverse-engineering/languages.md` | 按具体语言查对应章节 |
 | macOS / iOS | `reverse-engineering/platforms.md` — Mach-O/ObjC/Swift | — |
-| 游戏 (Unity/Unreal) | `game-security/` — 游戏引擎逆向、反作弊、IL2CPP/Mono | `ida-reverse/` 深度分析，`reverse-engineering/platforms.md` 通用方法 |
 | 内存转储 / PCAP | `reverse-engineering/platforms.md` | `reverse-engineering/patterns*.md` |
 | 恶意软件 / 病毒样本 | `reverse-engineering/` — YARA/沙箱/行为分析 | `ida-reverse/` 深度分析 |
 | 密码学 / 加解密算法 | `reverse-engineering/patterns*.md` — 密码学模式 | `js-reverse/`（如果是前端加密） |
@@ -58,10 +57,6 @@
 | "操作桌面应用/Windows 自动化" | `browser-automation/SKILL.md` — OpenReverse 桌面自动化 |
 | "UIA/CUA/桌面 GUI 操作" | `browser-automation/SKILL.md` — OpenReverse（UIA/CUA 模式） |
 | "OpenReverse" | `browser-automation/SKILL.md` — 桌面交互 + 网络观察 |
-| "游戏逆向/反作弊/外挂分析" | `game-security/SKILL.md` — 游戏安全逆向 |
-| "Unity/IL2CPP/Mono" | `game-security/SKILL.md` — Unity 游戏逆向 |
-| "Unreal Engine/UE 逆向" | `game-security/SKILL.md` — UE 游戏逆向 |
-| "Cheat Engine/内存扫描" | `game-security/SKILL.md` — 内存分析 |
 | "符号迁移/跨版本对比" | `binary-diff/SKILL.md` — LLM 批量符号迁移 |
 | "缺 PDB/旧版符号推导新版" | `binary-diff/SKILL.md` — 跨版本符号迁移 |
 | "bindiff/函数偏移迁移" | `binary-diff/SKILL.md` — 二进制差分 |
@@ -148,9 +143,6 @@
 | jshookmcp | `js-reverse/` 的补强 MCP 面，适合浏览器/CDP/Hook/Network/SourceMap/AST 场景；需要先下载并在 MCP 客户端里启用 |
 | agent-browser / Playwright | `browser-automation/` — 浏览器自动化（打开、点击、填表、爬取、截图） |
 | OpenReverse (UIA/CUA) | `browser-automation/` — Windows 桌面应用自动化 + 网络观察（mitmproxy） |
-| Cheat Engine / x64dbg / ReClass | `game-security/` — 游戏内存分析、调试 |
-| IL2CPP Dumper / dnSpy | `game-security/` — Unity/Mono 游戏逆向 |
-| DynamoRIO / Pin / TinyInst | `game-security/` — DBI 框架（游戏场景） |
 | LLM 符号迁移 / BinDiff 替代 | `binary-diff/` — 跨版本符号批量迁移（DeepSeek/GPT） |
 | Nmap / Masscan | `pentest-tools/` — 端口扫描、服务识别 |
 | Nuclei / ZAP / Nikto | `pentest-tools/` — 漏洞扫描 |

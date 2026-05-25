@@ -66,7 +66,6 @@ AI社区：https://linux.do
     ├── browser-automation\      # 浏览器+桌面自动化（Playwright+OpenReverse）
     ├── diagram-generator\       # 图表生成（Mermaid/Graphviz/PlantUML）
     ├── docs-generator\          # 技术文档/报告生成
-    ├── game-security\           # 游戏安全逆向
     ├── ida-reverse\             # IDA Pro 逆向
     ├── js-reverse\              # 前端 JS / 浏览器链路逆向
     ├── pentest-tools\           # 渗透测试工具链
@@ -208,7 +207,6 @@ C:\Tools\radare2\                      # 可选
 | radare2 | `radare2\` | CLI 侦察、字符串、导入导出、patch |
 | 通用方法论 | `reverse-engineering\` | 跨语言、跨平台、反分析、模式库 |
 | 浏览器与桌面自动化 | `browser-automation\` | Playwright 浏览器操作 + OpenReverse 桌面应用自动化 |
-| 游戏安全 | `game-security\` | 游戏反作弊、Unity/UE 逆向、内存扫描、DBI |
 | 跨版本符号迁移 | `binary-diff\` | 旧版符号迁移新版、缺 PDB 推导、LLM 批量迁移 |
 | 渗透测试工具链 | `pentest-tools\` | Nmap/Nuclei/SQLMap/FFUF/Hashcat 等 20+ 工具 MCP |
 | 图表生成 | `diagram-generator\` | Mermaid/Graphviz/PlantUML 图表（攻击路径/架构/数据流） |
@@ -222,7 +220,6 @@ C:\Tools\radare2\                      # 可选
 - exe / dll / so / elf → `ida-reverse\SKILL.md` 或 `radare2\SKILL.md`
 - 找前端签名 / 加密参数 → `js-reverse\SKILL.md`
 - HTTP 抓包 / 浏览器采样 / 请求回放 → anything-analyzer + `js-reverse`
-- 游戏逆向 / 反作弊 → `game-security\SKILL.md`
 - 渗透测试 / 端口扫描 / 漏洞扫描 → `pentest-tools\SKILL.md`
 - 浏览器/桌面自动化 → `browser-automation\SKILL.md`
 - 符号迁移 / 跨版本对比 → `binary-diff\SKILL.md`

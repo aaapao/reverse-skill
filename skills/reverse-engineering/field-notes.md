@@ -25,8 +25,6 @@ Detailed quick notes that support [`SKILL.md`](SKILL.md). Read this file after t
   - [Unicorn Emulation (Complex State)](#unicorn-emulation-complex-state)
   - [Multi-Stage Shellcode Loaders](#multi-stage-shellcode-loaders)
   - [Timing Side-Channel Attack](#timing-side-channel-attack)
-  - [Godot Game Asset Extraction](#godot-game-asset-extraction)
-  - [Roblox Place File Analysis](#roblox-place-file-analysis)
   - [Unstripped Binary Information Leaks](#unstripped-binary-information-leaks)
   - [Custom Mangle Function Reversing](#custom-mangle-function-reversing)
   - [Rust serde_json Schema Recovery](#rust-serde_json-schema-recovery)
@@ -38,7 +36,6 @@ Detailed quick notes that support [`SKILL.md`](SKILL.md). Read this file after t
   - [Prefix Hash Brute-Force](#prefix-hash-brute-force)
   - [Mathematical Convergence Bitmap](#mathematical-convergence-bitmap)
   - [RISC-V Binary Analysis](#risc-v-binary-analysis)
-  - [Sprague-Grundy Game Theory Binary](#sprague-grundy-game-theory-binary)
   - [Kernel Module Maze Solving](#kernel-module-maze-solving)
   - [Multi-Threaded VM with Channels](#multi-threaded-vm-with-channels)
   - [CVP/LLL Lattice for Constrained Integer Validation](#cvplll-lattice-for-constrained-integer-validation)
@@ -72,7 +69,6 @@ Detailed quick notes that support [`SKILL.md`](SKILL.md). Read this file after t
   - [macOS / iOS Reversing](#macos--ios-reversing)
   - [Embedded / IoT Firmware RE](#embedded--iot-firmware-re)
   - [Kernel Driver Reversing](#kernel-driver-reversing)
-  - [Game Engine Reversing](#game-engine-reversing)
   - [Swift / Kotlin Binary Reversing](#swift--kotlin-binary-reversing)
   - [INT3 Patch + Coredump Brute-Force Oracle](#int3-patch--coredump-brute-force-oracle)
   - [Signal Handler Chain + LD_PRELOAD Oracle](#signal-handler-chain--ld_preload-oracle)
@@ -103,13 +99,11 @@ Disassemble with `marshal.load()` + `dis.dis()`. Header: 8 bytes (2.x), 12 (3.0-
 wasm2c checker.wasm -o checker.c
 gcc -O3 checker.c wasm-rt-impl.c -o checker
 
-# WASM patching (game challenges):
+# WASM patching (challenge binaries):
 wasm2wat main.wasm -o main.wat    # Binary → text
 # Edit WAT: flip comparisons, change constants
 wat2wasm main.wat -o patched.wasm # Text → binary
 ```
-
-**WASM game patching (Tac Tic Toe, Pragyan 2026):** If proof generation is independent of move quality, patch minimax (flip `i64.lt_s` → `i64.gt_s`, change bestScore sign) to make AI play badly while proofs remain valid. Invoke `/ctf-misc` for full game patching patterns (games-and-vms).
 
 ### Android APK
 `apktool d app.apk -o decoded/` for resources; `jadx app.apk` for Java decompilation. Check `decoded/res/values/strings.xml` for flags. See [tools.md](tools.md#android-apk).
@@ -191,12 +185,6 @@ Nested shellcode with XOR decode loops; break at `call rax`, bypass ptrace with 
 ### Timing Side-Channel Attack
 Validation time varies per correct character; measure elapsed time per candidate to recover flag byte-by-byte. See [patterns.md](patterns.md#timing-side-channel-attack).
 
-### Godot Game Asset Extraction
-Use KeyDot to extract encryption key from executable, then gdsdecomp to extract .pck package. See [languages-platforms.md](languages-platforms.md#godot-game-asset-extraction).
-
-### Roblox Place File Analysis
-Query Asset Delivery API for version history; parse `.rbxlbin` chunks (INST/PROP/PRNT) to diff script sources across versions. See [languages-platforms.md](languages-platforms.md#roblox-place-file-analysis).
-
 ### Unstripped Binary Information Leaks
 **Pattern:** Debug info and file paths leak author identity. Quick checks: `strings binary | grep "/home/"` (home dirs), `file binary` (stripped?), `readelf -S binary | grep debug` (debug sections).
 
@@ -228,9 +216,6 @@ Binary hashes every prefix independently. Recover one character at a time by mat
 
 ### RISC-V Binary Analysis
 Statically linked, stripped RISC-V ELF. Use Capstone with `CS_MODE_RISCVC | CS_MODE_RISCV64` for mixed compressed instructions. Emulate with `qemu-riscv64`. Watch for fake flags and XOR decryption with incremental keys. See [tools.md](tools.md#risc-v-binary-analysis-ehax-2026).
-
-### Sprague-Grundy Game Theory Binary
-Game binary plays bounded Nim with PRNG for losing-position moves. Identify game framework (Grundy values = pile % (k+1), XOR determines position), track PRNG state evolution through user input feedback. See [patterns-ctf.md](patterns-ctf.md#sprague-grundy-game-theory-binary-dicectf-2026).
 
 ### Kernel Module Maze Solving
 Rust kernel module implements maze via device ioctls. Enumerate commands dynamically, build DFS solver with decoy avoidance, deploy as minimal static binary (raw syscalls, no libc). See [patterns-ctf.md](patterns-ctf.md#kernel-module-maze-solving-dicectf-2026).
@@ -331,9 +316,6 @@ Mach-O binaries: `otool -l` for load commands, `class-dump` for Objective-C head
 ### Kernel Driver Reversing
 Linux `.ko`: find ioctl handler via `file_operations` struct, trace `copy_from_user`/`copy_to_user`. Debug with QEMU+GDB (`-s -S`). eBPF: `bpftool prog dump xlated`. Windows `.sys`: find `DriverEntry` → `IoCreateDevice` → IRP handlers. See [platforms.md](platforms.md#kernel-driver-reversing).
 
-### Game Engine Reversing
-Unreal: extract .pak with UnrealPakTool, reverse Blueprint bytecode with FModel. Unity Mono: decompile Assembly-CSharp.dll with dnSpy. Anti-cheat (EAC, BattlEye, VAC): identify system, bypass specific check. Lua games: `luadec`/`unluac` for bytecode. See [platforms.md](platforms.md#game-engine-reversing).
-
 ### Swift / Kotlin Binary Reversing
 Swift: `swift demangle` symbols, protocol witness tables for dispatch, `__swift5_*` sections. Kotlin/JVM: coroutines compile to state machines in `invokeSuspend`, `jadx` with Kotlin mode for best decompilation. Kotlin/Native: LLVM backend, looks like C++ in disassembly. See [languages-compiled.md](languages-compiled.md#swift-binary-reversing).
 
@@ -359,7 +341,7 @@ Esoteric language using iterated fraction multiplication. Invert by swapping num
 Execution traces with only opcodes (no data) still leak info through branch decisions. Sorting algorithm comparisons reveal element ordering. Reconstruct by deduplicating trace, splitting into basic blocks. See [tools-dynamic.md](tools-dynamic.md#opcode-only-trace-reconstruction-0ctf-2016).
 
 ### Thread Race Signed Integer Overflow
-Game binary with thread-unsafe skill lock. Race between skill selection and damage calculation; `cdqe` sign-extends 0xFFFFFFFF to -1 (signed), causing HP overflow on subtraction. See [patterns-ctf-3.md](patterns-ctf-3.md#thread-race-condition-with-signed-integer-overflow-codegate-2017).
+Combat-simulation binary with thread-unsafe skill lock. Race between skill selection and damage calculation; `cdqe` sign-extends 0xFFFFFFFF to -1 (signed), causing HP overflow on subtraction. See [patterns-ctf-3.md](patterns-ctf-3.md#thread-race-condition-with-signed-integer-overflow-codegate-2017).
 
 ### ESP32/Xtensa Firmware Reversing
 No IDA support — use radare2 + ESP-IDF ROM linker script (`esp32.rom.ld`) for symbol resolution. Cross-reference with public ESP-IDF HTTP server examples to identify app logic. See [patterns-ctf-3.md](patterns-ctf-3.md#esp32xtensa-firmware-reversing-with-rom-symbol-map-insomnihack-2017).
@@ -530,7 +512,7 @@ strace ./binary 2>&1 | grep ptrace
 # 如果看到 ptrace(PTRACE_TRACEME, ...) 说明有反调试
 ```
 
-### 游戏外挂/保护类样本的常见模式
+### 进程注入/保护壳类样本的常见模式
 
 这类样本（如 `LinYuDriverLoader`）通常：
 

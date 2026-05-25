@@ -2,7 +2,7 @@
 name: binary-diff
 description: |
   跨版本符号迁移与二进制差分。当你有旧版本的符号/逆向结果，需要快速迁移到新版本时使用。
-  适用场景：内核缺 PDB 用旧版符号推导、程序更新后批量迁移函数名、游戏反作弊更新后快速定位新偏移。
+  适用场景：内核缺 PDB 用旧版符号推导、程序更新后批量迁移函数名、应用更新后快速定位新偏移。
   核心方法：用 LLM 做结构化差异比对，程序化输入输出，成本极低（200 函数 ~1 元）。
   触发关键词：符号迁移、bindiff、跨版本、PDB 缺失、函数偏移迁移、symbol migration、binary diff、版本对比。
 ---
@@ -15,7 +15,7 @@ description: |
 
 1. **内核/驱动缺 PDB** — 有旧版 ntoskrnl.exe 的符号，新版 PDB 被微软下架，需要用旧版符号推导新版非导出函数地址
 2. **程序更新后符号迁移** — 曾经逆向过某个程序，程序更新了，不想重新逆一遍，用旧版结果批量迁移
-3. **游戏反作弊更新** — 旧版有完整逆向结果，新版需要快速定位同一函数的新偏移
+3. **保护机制更新** — 旧版有完整逆向结果，新版需要快速定位同一函数的新偏移
 4. **任何"有旧版符号 + 新版无符号"的二进制对比场景**
 
 ### 与其他 skill 的分工
@@ -25,7 +25,6 @@ description: |
 | 从零开始逆向一个二进制 | `ida-reverse/` 或 `radare2/` |
 | 有旧版结果，迁移到新版 | **本 skill** |
 | 两个完全不同的二进制对比 | BinDiff / Diaphora（传统工具） |
-| 游戏引擎结构分析 | `game-security/` |
 
 ### 核心优势
 
@@ -106,15 +105,15 @@ found_vcall: # This is for indirect call to virtual function or virtual function
 found_call: # This is for direct call to non-virtual regular function.
   - insn_va: '0x180888800'
     insn_disasm: call sub_180999900
-    func_name: CLoopModeGame_RegisterEventMapInternal
+    func_name: CLoopMode_RegisterEventMapInternal
   - insn_va: '0x180888880'
     insn_disasm: call sub_180555500
-    func_name: CLoopModeGame_SetGameSystemState
+    func_name: CLoopMode_SetSystemState
 
 found_funcptr: # This is for non-virtual regular function pointer.
   - insn_va: '0x180666600' # Must load/reference the function pointer target address
     insn_disasm: lea rdx, sub_15BC910 # Must load/reference the function pointer target address
-    funcptr_name: CLoopModeGame_OnClientPollNetworking
+    funcptr_name: CLoopMode_OnClientPollNetworking
 
 found_gv: # This is for reference to global variable.
   - insn_va: '0x180444400'
@@ -122,14 +121,14 @@ found_gv: # This is for reference to global variable.
     gv_name: g_pNetworkMessages
   - insn_va: '0x180333300'
     insn_disasm: lea rax, unk_180222200 # Must load/reference the global variable
-    gv_name: s_GameEventManager
+    gv_name: s_EventManager
 
 found_struct_offset: # This is for reference to struct offset. NOTE THAT virtual function pointer should not be here! virtual function pointer should ALWAYS be in found_vcall !
   - insn_va: '0x1801BA12A' # Always be the instruction with displacement offset
     insn_disasm: mov rcx, [r14+58h] # Always be the instruction with displacement offset
     offset: '0x58'
     size: 8
-    struct_name: CGameResourceService
+    struct_name: CResourceService
     member_name: m_pEntitySystem
 ```
 
@@ -232,11 +231,11 @@ found_struct_offset → idapro_set_comments(addr=insn_va, comment="{struct_name}
 6. 批量应用
 ```
 
-### 场景 2：游戏更新后迁移
+### 场景 2：应用更新后迁移
 
 ```text
-已有：game.exe v1.0 的完整逆向结果（200+ 函数已命名）
-目标：game.exe v1.1（所有符号丢失）
+已有：target.exe v1.0 的完整逆向结果（200+ 函数已命名）
+目标：target.exe v1.1（所有符号丢失）
 需求：批量迁移 200 个函数名
 
 步骤：
@@ -295,6 +294,5 @@ found_struct_offset → idapro_set_comments(addr=insn_va, comment="{struct_name}
 **下游出口**:
 - 需要先打开二进制 → `ida-reverse/`
 - 需要快速侦察确认版本差异 → `radare2/`
-- 游戏场景 → `game-security/`
 
 **同级关联模块**: `ida-reverse/`（数据导出和符号应用都通过 IDA）

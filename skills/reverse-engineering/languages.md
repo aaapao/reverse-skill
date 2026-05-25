@@ -9,7 +9,6 @@
   - [Recovery](#recovery)
 - [Pyarmor 8/9 Static Unpack (1shot)](#pyarmor-89-static-unpack-1shot)
 - [DOS Stub Analysis](#dos-stub-analysis)
-- [Unity IL2CPP Games](#unity-il2cpp-games)
 - [HarmonyOS HAP/ABC Reverse (abc-decompiler)](#harmonyos-hapabc-reverse-abc-decompiler)
 - [Brainfuck/Esolangs](#brainfuckesolangs)
   - [Brainfuck Character-by-Character Static Analysis (BSidesSF 2026)](#brainfuck-character-by-character-static-analysis-bsidessf-2026)
@@ -23,7 +22,7 @@
 - [Non-Bijective Substitution Cipher Reversing](#non-bijective-substitution-cipher-reversing)
 - [FRACTRAN Program Inversion (Boston Key Party 2016)](#fractran-program-inversion-boston-key-party-2016)
 
-For platform/framework-specific techniques (Android, Roblox, Godot, Electron, Node.js, Verilog, Ruby/Perl polyglot, etc.), see [languages-platforms.md](languages-platforms.md).
+For platform/framework-specific techniques (Android, Electron, Node.js, Verilog, Ruby/Perl polyglot, etc.), see [languages-platforms.md](languages-platforms.md).
 For Go and Rust binary reversing, see [languages-compiled.md](languages-compiled.md).
 
 ---
@@ -119,20 +118,6 @@ PE files can hide code in DOS stub:
 4. Look for `int 16h` (keyboard input)
 
 **Key insight:** PE files can embed a fully functional 16-bit DOS program in the DOS stub (before the PE header). If the stub is unusually large, load it in IDA as 16-bit DOS or run it in DOSBox -- the challenge logic may live entirely in the stub.
-
----
-
-## Unity IL2CPP Games
-
-- Use Il2CppDumper to dump symbols
-- If Il2CppDumper fails, consider that `global-metadata.dat` may be encrypted; search strings/xrefs in the main binary and inspect the metadata loading path for custom decryption before dump.
-- Look for `Start()` functions
-- Key derivation: `key = SHA256(companyName + "\n" + productName)`
-- Decrypt server responses with derived key
-
-Please note most of that the executable file for the PC platform is GameAssembly.dll or *Assembly.dll, for the Android is libil2cpp.so.
-
-**Key insight:** IL2CPP compiles C# to native code, but Il2CppDumper recovers method names and offsets. If the dumper fails, the `global-metadata.dat` is likely encrypted -- trace the metadata loading path in the native binary to find the custom decryption before dumping.
 
 ---
 
