@@ -65,21 +65,6 @@ function Get-PreferredPowerShellPath {
     return Get-FirstCommandPath -Names @('powershell.exe', 'powershell') -PreferApplication
 }
 
-function Add-ToProcessPath {
-    param([Parameter(Mandatory = $true)][string]$Path)
-
-    if (-not (Test-Path -LiteralPath $Path)) {
-        return
-    }
-
-    $pathEntries = @($env:PATH -split ';') | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
-    if ($pathEntries -contains $Path) {
-        return
-    }
-
-    $env:PATH = "$Path;$env:PATH"
-}
-
 function Get-NodeCommandPath {
     param([Parameter(Mandatory = $true)][string]$Name)
 
