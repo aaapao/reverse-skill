@@ -83,6 +83,7 @@ If already written (global config contains "reverse skill routing" content), che
 - privilege escalation, 权限提升, credential extraction, 凭证提取, Mimikatz, Kerberoasting, DCSync
 - C2, persistence, 持久化, Cobalt Strike, Sliver, Havoc
 - game reverse, 游戏逆向, anti-cheat, 反作弊, Unity, IL2CPP, Cheat Engine
+- .NET reverse, C# 逆向, dnSpy, dnSpyEx, de4dot, ConfuserEx, SmartAssembly, .NET Reactor, dnlib, IL patch, SharpHound, Rubeus
 - symbol migration, 符号迁移, bindiff, cross-version, PDB missing
 - security diagram, 安全图表, attack path diagram, 攻击路径图, security architecture, 安全架构图 — trigger `diagram-generator/`
 

@@ -19,7 +19,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | JavaScript / Web frontend | `js-reverse/` — 5-stage workflow | anything-analyzer MCP browser tools, or jshookmcp CDP/Hook |
 | HTTP capture / browser sampling / request replay | anything-analyzer MCP (23816) | `js-reverse/`, jshookmcp, or `competition-web-runtime/` |
 | Firmware / IoT | `reverse-engineering/platforms.md` — binwalk/ARM/MIPS | `reverse-engineering/tools.md` — Ghidra headless |
-| WASM / Python bytecode / .NET | `reverse-engineering/languages.md` | Check specific language section |
+| WASM / Python bytecode | `reverse-engineering/languages.md` | Check specific language section |
+| .NET / C# 托管程序 (exe/dll) / ConfuserEx/SmartAssembly 混淆 / Sharp* 红队工具 | `dotnet-reverse/SKILL.md` — dnSpyEx + de4dot，IL 优先 | IL2CPP/NativeAOT (native) → `reverse-engineering/` |
 | macOS / iOS | `reverse-engineering/platforms.md` — Mach-O/ObjC/Swift | `mobile-reverse/` for iOS-specific |
 | Game (Unity) | `reverse-engineering/` — engine reverse, anti-cheat, IL2CPP/Mono (see seed-014) | `ida-reverse/` deep analysis |
 | Memory dump / PCAP | `reverse-engineering/platforms.md` | `reverse-engineering/patterns*.md` |
@@ -61,6 +62,11 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "BR 混淆 / 间接分支混淆去除" | `reverse-engineering/references/ollvm-deobfuscation.md` — DeObfBR + 数据段只读 |
 | "what obfuscation / VM is this" | `reverse-engineering/patterns*.md` — match by pattern |
 | "Go/Rust/Swift reverse" | `reverse-engineering/languages-compiled.md` + `go-reverse.md` |
+| ".NET / C# 逆向 / dnSpy / dnSpyEx 分析" | `dotnet-reverse/SKILL.md` — 托管 PE 逆向 |
+| "ConfuserEx / SmartAssembly / Babel 脱混淆 / 脱壳" | `dotnet-reverse/references/obfuscators.md` — de4dot + anti-tamper 绕过 |
+| "Sharp* 工具分析 / Rubeus / SharpHound 逆向" | `dotnet-reverse/references/sharp-tools.md` — 红队工具分析 |
+| ".NET malware / loader / info-stealer 逆向" | `dotnet-reverse/SKILL.md` — 配置/C2/key 提取 |
+| "C# 程序 patch / keygen / 改判断" | `dotnet-reverse/references/common-workflow.md` — IL patch 优先 |
 | "kernel driver / Rootkit / LKM" | `reverse-engineering/kernel-driver-reverse.md` |
 | "Python bytecode / pyc" | `reverse-engineering/languages.md` — Python section |
 | "symbol execution / angr" | `reverse-engineering/tools-dynamic.md` — angr section |
@@ -166,6 +172,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | agent-browser / Playwright | `browser-automation/` — browser automation |
 | OpenReverse (UIA/CUA) | `browser-automation/` — Windows desktop automation |
 | Cheat Engine / x64dbg / ReClass | `reverse-engineering/` — game memory analysis (seed-014) |
+| dnSpyEx / ILSpy / de4dot / dnlib | `dotnet-reverse/` — .NET/C# 托管程序逆向 + 脱混淆 |
+| dnSpy MCP | `dotnet-reverse/references/sharp-tools.md` — AI 直接操作 dnSpy（decompile / IL inspection）|
 | IL2CPP Dumper / dnSpy | `reverse-engineering/` — Unity/Mono game reverse (seed-014) |
 | LLM symbol migration / BinDiff alternative | `binary-diff/` — cross-version batch migration |
 | Nmap / Masscan | `pentest-tools/` — port scan, service identification |
