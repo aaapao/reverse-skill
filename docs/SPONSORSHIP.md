@@ -22,17 +22,18 @@
 
 ## 赞助档位（建议价，可议）
 
-价格为 **USD / 月**（可按季度付款；国内可谈人民币对公）。最终以邮件确认的报价单为准。
+默认按 **人民币 / 月** 报价（方便国内对公）；也可付 USD（约按当月汇率，或按下表美元档）。  
+价格偏「友好起步」，方便第一批赞助商上车；**可议、可季度更优惠**。最终以邮件确认为准。
 
-| 档位 | 月费（参考） | 你获得什么 |
-|------|-------------|------------|
-| **Supporter** | $99–199 | 感谢名单（README Sponsors 文字一行 + 链接） |
-| **Logo** | $300–800 | README Sponsors 区 logo（高 40px）+ 官网链接 + 感谢名单 |
-| **Featured** | $1,000–2,500 | 更大 logo 或优先排序 + 可选一次 X 推文提及（不写软广长文） |
-| **Primary** | $3,000+ | 当季主赞助位（标注 *Primary Sponsor*）+ logo + 一次推文 + 可选文档「推荐工具」表格一行（标注 Sponsored） |
-| **Hiring** | 另议 | README「We're hiring」一行岗位链接（可与 Logo/Featured 叠加） |
+| 档位 | 月费（参考） | 约合 USD | 你获得什么 |
+|------|-------------|----------|------------|
+| **Supporter** | **¥49–99** | ~$7–14 | 感谢名单（README 文字一行 + 链接） |
+| **Logo** | **¥199–399** | ~$28–55 | README logo（高 40px）+ 官网链接 |
+| **Featured** | **¥599–999** | ~$85–140 | 优先排序 logo + 可选一次 X 推文提及 |
+| **Primary** | **¥1,499–2,499** | ~$210–350 | 主赞助位标注 + logo + 一次推文 + 可选文档赞助行 |
+| **Hiring** | **¥299 起** 或与 Logo 打包 | — | README「We're hiring」一行岗位链接 |
 
-**季度 / 半年** 通常可谈折扣；多季度可锁定价格。
+**季度付 9 折、半年付 8.5 折**（可谈）；学生社团 / 开源友好团队可再商量。
 
 ### 不包含 / 不做
 
@@ -102,13 +103,15 @@ Logo row example (height 40):
 
 **reverse-skill** is an AI skill-router for reverse engineering and authorized security work (**8k+ GitHub stars**). Audience: security engineers, red/blue teams, RE, AI+security builders.
 
-| Tier | USD / month (indicative) | Includes |
-|------|--------------------------|----------|
-| Supporter | $99–199 | Text credit + link |
-| Logo | $300–800 | README logo (h=40) + link |
-| Featured | $1,000–2,500 | Priority logo + optional X mention |
-| Primary | $3,000+ | Primary badge + logo + X + optional sponsored tool line |
-| Hiring | custom | Hiring blurb on README |
+| Tier | CNY / month (indicative) | ~USD | Includes |
+|------|--------------------------|------|----------|
+| Supporter | ¥49–99 | ~$7–14 | Text credit + link |
+| Logo | ¥199–399 | ~$28–55 | README logo (h=40) + link |
+| Featured | ¥599–999 | ~$85–140 | Priority logo + optional X mention |
+| Primary | ¥1,499–2,499 | ~$210–350 | Primary badge + logo + X + optional sponsored line |
+| Hiring | from ¥299 or bundle | — | Hiring blurb on README |
+
+Friendly starter pricing; quarterly ~10% off, half-year ~15% off.
 
 **Contact:** [24781737@qq.com](mailto:24781737@qq.com) · Subject: `[Sponsorship] YourCo × reverse-skill`
 
